@@ -119,7 +119,7 @@ var dima_server = 621728738316386344
   }
   if(message.content.startsWith(prefix + 'Схемы Использования')) {
    let send_to
-   if (message.content.startsWith(prefix + 'help-g')) {send_to = message.channel} else {send_to = message.author}
+   if (message.content.startsWith(prefix + 'Схемы Использования-g')) {send_to = message.channel} else {send_to = message.author}
    send_to.send("```yaml\n"+prefix+"Set Roles [упоминание роли] [упоминание человека] (или наоборот)\n"+prefix+"Add Simple Role [название для роли]\n"+prefix+"Color Role [упоминание роли] [цвет в шестнадцатеричной системе счисления]\n"+prefix+"Rename Role [упоминание роли] [новое название]\n"+prefix+"Edit Permissions Role [упоминание роли] [далее коды прав типо BAN_MEMBERS]\n/kill [упоминание человека чтоб убить? если нету такого то суицид]\n"+prefix+"кол [упоминание человека чтоб проткнуть его противо-вампирным колом]\n./me [что делать? если нету то пишет что не знаешь что писать]```");
    if (!message.content.startsWith(prefix + 'Схемы Использования-g')) {message.channel.send("Отправлено в личку")}
   }
@@ -128,7 +128,7 @@ var dima_server = 621728738316386344
   }
   if(message.content.startsWith(prefix+'о '+bot_user_name)) {
    let send_to
-   if (message.content.startsWith(prefix + 'help-g')) {send_to = message.channel} else {send_to = message.author}
+   if (message.content.startsWith(prefix+'о '+bot_user_name+'-g')) {send_to = message.channel} else {send_to = message.author}
    send_to.send("```yaml\n Я написан на JavaScript в Notepad++, прошу не оскорблять меня, перед использованием команд прошу ознакомится с командой на следующей строке \n"+prefix+"Схемы Использования\n А то меня бесит когда кто-то использует команды без какого-то из аргументов...```");
    if (!message.content.startsWith(prefix+'о '+bot_user_name+'-g')) {message.channel.send("Отправлено в личку")}
   } 
