@@ -54,8 +54,8 @@ var dima_server = 621728738316386344
   }
   if (message.content.startsWith(bot_user_name) || message.content.replace(/[\\<>@#&!]/g, "").includes(bot_id) || (message.mentions.roles && message.mentions.roles.first() && message.mentions.roles.first().managed && message.mentions.roles.first().name == bot_user_name)) {
    let reply = "nil"
-   message.content = message.content.replace(/[\\<>@#&!]/g, "")
-   message.content = message.content.replace(/[\\<>@#&!]/g, "")
+   message.content = message.content.replaceAll(/[\\<>@#&!]/g, "")
+   message.content = message.content.replaceAll(/[\\<>@#&!]/g, "")
    message.content = message.content.replaceAll("\\s+", " ");
    if (message.mentions.roles.first()){message.content = message.content.replaceAll(message.mentions.roles.first().id, bot_user_name)}
    if (message.mentions.users.first()){message.content = message.content.replaceAll(bot_id, bot_user_name)}
