@@ -43,7 +43,7 @@ var dima_server = 621728738316386344
    close()
    process.on('SIGKILL')
   }
-  if (!message.guild && message.author.id == arseny_id && reply_to && !message.content == "Status Change") {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; /*if (message.content == "ban"){db.get("bans").merge(to_add).write()} else {db.get("messages").merge(to_add).write()}*/}
+  if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; /*if (message.content == "ban"){db.get("bans").merge(to_add).write()} else {db.get("messages").merge(to_add).write()}*/}
   if (!message.guild) return;
   /*let role = message.guild.roles.find(r => r.name == 'Создатель '+bot_name)
   if (isNotArseny) {if (role && message.member.roles.get(role.id)) {message.member.removeRole(role.id)}}*/
@@ -61,7 +61,7 @@ var dima_server = 621728738316386344
    if (message.mentions.users.first()){message.content = message.content.replaceAll(bot_id, bot_user_name)}
    let ban = db.get("bans").value()[arguments[0].toLowerCase()]
    if (!ban) {reply = db.get("messages").value()[message.content.toLowerCase()]}
-   if (reply && reply.includes("Creator")) {reply = reply.replaceAll("Creator", client.users.find(user => user.id == arseny_id))}
+   if (reply && reply.includes("Creator")) {reply = reply.replaceAll("?", "");reply = reply.replaceAll("Creator", client.users.find(user => user.id == arseny_id))}
    if (reply == "nil") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
   }
   if(message.content.startsWith('./me')) {
