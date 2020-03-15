@@ -38,6 +38,10 @@ var dima_server = 621728738316386344
   let isNotArseny = !isArseny
   let arguments = message.content.slice(prefix.length).trim().split(/ +/g)
   let argumentsAndPrefix = message.content.trim().split(/ +/g)
+  if(isArseny && message.content.toLowerCase().startsWith('все бот выключайся')) {
+   message.channel.send("Ок.");
+   close()
+  }
   if (!message.guild && message.author.id == arseny_id && reply_to && !message.content == "Status Change") {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; /*if (message.content == "ban"){db.get("bans").merge(to_add).write()} else {db.get("messages").merge(to_add).write()}*/}
   if (!message.guild) return;
   /*let role = message.guild.roles.find(r => r.name == 'Создатель '+bot_name)
@@ -101,11 +105,6 @@ var dima_server = 621728738316386344
   let bot_role_pos = bot.highestRole.position
   console.log(message.author + ': ' + message.content)
   if(message.author === client.user) return;
-  if(message.content.startsWith(prefix + 'die')) {
-   message.delete()
-   message.channel.send("Closing");
-   close()
-  }
   if(message.content.startsWith(prefix+"leave-dima") && isArseny) {
    message.channel.send("```diff\n- ТЕСТ...```");
    client.channels.get("621729015014752316").send("```diff\n- Покидаю сервер...```")
