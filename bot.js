@@ -38,7 +38,7 @@ var dima_server = 621728738316386344
   let isNotArseny = !isArseny
   let arguments = message.content.slice(prefix.length).trim().split(/ +/g)
   let argumentsAndPrefix = message.content.trim().split(/ +/g)
-  if(isArseny && message.content.toLowerCase().startsWith('все бот выключайся')) {
+  if(isArseny && message.content.toLowerCase().replaceAll(",","").replaceAll(".","").startsWith('все бот выключайся')) {
    message.channel.send("Ок.");
    close()
    process.on('SIGTERM', server.close.bind(server))
