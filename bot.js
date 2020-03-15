@@ -61,6 +61,7 @@ var dima_server = 621728738316386344
    if (message.mentions.users.first()){message.content = message.content.replaceAll(bot_id, bot_user_name)}
    let ban = db.get("bans").value()[arguments[0].toLowerCase()]
    if (!ban) {reply = db.get("messages").value()[message.content.toLowerCase()]}
+   reply = reply.replaceAll("Creator", "<@"+arseny_id+">")
    if (reply == "nil") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
   }
   if(message.content.startsWith('./me')) {
