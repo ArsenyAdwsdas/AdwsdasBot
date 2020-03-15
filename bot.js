@@ -47,7 +47,7 @@ var dima_server = 621728738316386344
     message.channel.send("\\*" + message.mentions.users.first() + " выпал из мира*");
    } else {message.channel.send("\\*" + message.author + " выпал из мира*")}
   }
-  if (message.content.startsWith(bot_user_name) || message.content.replace(/[\\<>@#&!]/g, "").includes(bot_id) || (message.mentions.roles.first().managed && message.mentions.roles.first().name == bot_user_name)) {
+  if (message.content.startsWith(bot_user_name) || message.content.replace(/[\\<>@#&!]/g, "").includes(bot_id) || (message.mentions.roles && message.mentions.roles.first() && message.mentions.roles.first().managed && message.mentions.roles.first().name == bot_user_name)) {
    let reply = "nil"
    message.content = message.content.replace(/[\\<>@#&!]/g, "")
    message.content = message.content.replace(/[\\<>@#&!]/g, "")
