@@ -38,7 +38,8 @@ var dima_server = 621728738316386344
   let isNotArseny = !isArseny
   let arguments = message.content.slice(prefix.length).trim().split(/ +/g)
   let argumentsAndPrefix = message.content.trim().split(/ +/g)
-  if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; /*if (message.content == "ban"){db.get("bans").merge(to_add).write()} else {db.get("messages").merge(to_add).write()}*/}
+  if (isArseny && message.content == "Status Change"){if (bot_wip){client.user.setPresence({status: 'online'}, {game: {name: "ACTIVE, " + prefix + "help", type: 2}})}else{client.user.setPresence({status: 'idle'}, {game: {name: "WIP, " + prefix + "help", type: 2}})};bot_wip = !bot_wip}
+  if (!message.guild && message.author.id == arseny_id && reply_to && !message.content == "Status Change") {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; /*if (message.content == "ban"){db.get("bans").merge(to_add).write()} else {db.get("messages").merge(to_add).write()}*/}
   if (!message.guild) return;
   /*let role = message.guild.roles.find(r => r.name == 'Создатель '+bot_name)
   if (isNotArseny) {if (role && message.member.roles.get(role.id)) {message.member.removeRole(role.id)}}*/
