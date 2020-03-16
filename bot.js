@@ -60,6 +60,7 @@ var dima_server = 621728738316386344
    my_embed.setTimestamp(now)
    my_embed.setColor(color)
    message.channel.send(my_embed)
+   message.delete()
   }
   if (message.content.startsWith(bot_user_name) || message.content.replace(/[\\<>@#&!]/g, "").includes(bot_id) || (message.mentions.roles && message.mentions.roles.first() && message.mentions.roles.first().managed && message.mentions.roles.first().name == bot_user_name)) {
    let reply = "nil"
