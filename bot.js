@@ -51,6 +51,16 @@ var dima_server = 621728738316386344
     message.channel.send("\\*" + message.mentions.users.first() + " выпал из мира*");
    } else {message.channel.send("\\*" + message.author + " выпал из мира*")}
   }
+  if (message.content.startsWith("EMBED") && isArseny) {
+   let call = arguments.shift()
+   let color = arguments.shift()
+   let my_embed = new Discord.RichEmbed()
+   my_embed.setAuthor(message.author.username, message.author.avatarURL)
+   my_embed.setDescription(arguments.toString().replaceAll(",", " "))
+   my_embed.setTimestamp(now)
+   my_embed.setColor(color)
+   message.channel.send(my_embed)
+  }
   if (message.content.startsWith(bot_user_name) || message.content.replace(/[\\<>@#&!]/g, "").includes(bot_id) || (message.mentions.roles && message.mentions.roles.first() && message.mentions.roles.first().managed && message.mentions.roles.first().name == bot_user_name)) {
    let reply = "nil"
    message.content = message.content.replaceAll(/[\\<>@#&!]/g, "")
