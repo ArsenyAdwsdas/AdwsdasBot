@@ -34,6 +34,7 @@ var dima_server = 621728738316386344
   return target.replace(new RegExp(search, 'g'), replacement);
  };
  client.on('message', async message => {
+  if (message.author.bot) return;
   let isArseny = message.author.id == arseny_id
   let isNotArseny = !isArseny
   let arguments = message.content.slice(prefix.length).trim().split(/ +/g)
