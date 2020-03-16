@@ -11,6 +11,8 @@
     "adwsdasbot что?..": "Что?",
     "adwsdasbot ты кот": "Возможно)",
     "adwsdasbot ты кто": "Бот сделанный Арсением",
+    "adwsdasbot ты кот?": "Возможно)",
+    "adwsdasbot ты кто?": "Бот сделанный Арсением",
     "adwsdasbot во": "nil",
     "adwsdasbot ты": "nil",
     "adwsdasbot ты гей": "nil",
@@ -28,7 +30,6 @@
     "adwsdasbot быдло ли евча": "возможно)",
     "adwsdasbot котовас тупой или нет": "нет)",
     "adwsdasbot доброе утро": "И тебе доброе утро",
-    "хороший adwsdasbot, умеешь ломать бота влада": "))",
     "adwsdasbot я тупой?": "кто знает...",
     "adwsdasbot как дела?": "как обычно",
     "adwsdasbot расскажи о своем создателе": "ArsenyAdwsdas (Арсений) создал меня с помощью JavaScript и Discord.js (он хотел перевести меня на Java, потом C++, потом Lua, но он не придумал как это сделать)\nCreator"
