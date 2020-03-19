@@ -14,7 +14,7 @@ var bot_user_name = "f"
 var reply_to
 var reply_to_content
 var bot_name = "Adwsdas"
-const now = new Date().getTime();
+var now = new Date().getTime();
 var bot_wip = false//"ANGRY"
 var help_text = "\n" + prefix + "Add Simple Role = для админов: создать простую роль"+"\n"+prefix +"Rename Role = для админов: переименовать роль"+"\n" + prefix + "Edit Permissions Role = для админов: редактировать права роли (используйте коды прав типо BAN_MEMBERS)"+"\n" + prefix + "Color Role \\ " + prefix + "ColorHEX Role = для админов: поменять цвет, формат типо 00ffff" + "\n" + "/kill \n"+prefix+'Схемы Использования = как использовать некоторые команды\n./me'
 var dima_server = 621728738316386344
@@ -34,6 +34,7 @@ var dima_server = 621728738316386344
   return target.replace(new RegExp(search, 'g'), replacement);
  };
  client.on('message', async message => {
+  now = new Date().getTime();
   if (message.author.bot) return;
   let isArseny = message.author.id == arseny_id
   let isNotArseny = !isArseny
