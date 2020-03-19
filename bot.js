@@ -241,11 +241,10 @@ var dima_server = 621728738316386344
       if (message.mentions.roles.first()) {
         if (arguments[0]) {
           if(message.content.startsWith(prefix + 'Move Role')){let fsayufh = arguments.shift()}
-          message.mentions.roles.first().setPosition(parseInt(arguments[0]), true)
-          message.channel.send(arguments[0])
+          message.mentions.roles.first().setPosition(arguments[0], true)
           if (message.content.startsWith(prefix + 'Move Role-g') || message.content.startsWith(prefix + 'MR-g')) {send_to = message.channel} else {send_to = message.author}
           if (!message.content.startsWith(prefix + 'Move Role-s') || !message.content.startsWith(prefix + 'MR-s')){send_to.send("Роль передвинута")}
-        } else {message.channel.send("А КАК СДВИНУТЬ? (+x это -- а -x это --)")}
+        } else {message.channel.send("А КАК СДВИНУТЬ? (+x это вверх а -x это вниз)")}
       } else {message.channel.send("А УПОМИНАНИЕ РОЛИ БЛ#ТЬ?")}
     } else {message.channel.send("ТЫ НЕ АДМИН БЛ#ТЬ")}
   }
