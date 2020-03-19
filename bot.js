@@ -236,7 +236,8 @@ var dima_server = 621728738316386344
    } else {message.channel.send("ТЫ НЕ АДМИН БЛ#ТЬ")}
   }
   if(message.content.startsWith(prefix + 'Move Role') || message.content.startsWith(prefix + 'MR')) {
-    if(message.content.startsWith(prefix + 'Move Role')){let fsayufh = arguments.shift()}
+    let fsayufh = arguments.shift()
+    if(message.content.startsWith(prefix + 'Move Role')) {fsayufh = arguments.shift()}
     if (Admin) {
       if (message.mentions.roles.first()) {
         if (arguments[0]) {
