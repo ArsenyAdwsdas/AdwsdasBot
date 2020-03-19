@@ -237,8 +237,6 @@ var dima_server = 621728738316386344
   }
   if(message.content.startsWith(prefix + 'Move Role') || message.content.startsWith(prefix + 'MR')) {
     let fsayufh = arguments.shift()
-    fsayufh = arguments.shift()
-    //if(message.content.startsWith(prefix + 'Move Role')) {fsayufh = arguments.shift()}
     if (Admin) {
       if (message.mentions.roles.first()) {
         if (arguments[0]) {
