@@ -120,7 +120,7 @@ var dima_server = 621728738316386344
   console.log(message.author + ': ' + message.content)
   if(message.author === client.user) return;
   if(message.content.startsWith(prefix+"leave-dima") && isArseny) {
-   message.channel.send("```diff\n- ТЕСТ...```");
+   message.channel.send("```diff\n- Покидаю его...```");
    client.channels.get("621729015014752316").send("```diff\n- Покидаю сервер...```")
    client.guilds.leave()
   }
