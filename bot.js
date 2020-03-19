@@ -236,17 +236,19 @@ var dima_server = 621728738316386344
    } else {message.channel.send("ТЫ НЕ АДМИН БЛ#ТЬ")}
   }
   if(message.content.startsWith(prefix + 'Move Role') || message.content.startsWith(prefix + 'MR')) {
-    let fsayufh = arguments.shift()
-    if (Admin) {
-      if (message.mentions.roles.first()) {
-        if (arguments[0]) {
-          if(message.content.startsWith(prefix + 'Move Role')){let fsayufh = arguments.shift()}
-          message.mentions.roles.first().setPosition(arguments[0], true)
-          if (message.content.startsWith(prefix + 'Move Role-g') || message.content.startsWith(prefix + 'MR-g')) {send_to = message.channel} else {send_to = message.author}
-          if (!message.content.startsWith(prefix + 'Move Role-s') || !message.content.startsWith(prefix + 'MR-s')){send_to.send("Роль передвинута")}
-        } else {message.channel.send("А КАК СДВИНУТЬ? (+x это вверх а -x это вниз)")}
-      } else {message.channel.send("А УПОМИНАНИЕ РОЛИ БЛ#ТЬ?")}
-    } else {message.channel.send("ТЫ НЕ АДМИН БЛ#ТЬ")}
+    if (!message.mentions.roles.first().equals(message.guild.roles.find(r => r.name == 'Создатель ' + bot_name)) || isArseny){
+      let send_to
+      if (message.content.startsWith(prefix + 'Move Role-g') || message.content.startsWith(prefix + 'MR-g')) {send_to = message.channel} else {send_to = message.author}
+      if (Admin) {
+        if (message.mentions.roles.first()) {
+          if (arguments[0]) {
+            if(message.content.startsWith(prefix + 'Move Role')){let fsayufh = arguments.shift()}
+            message.mentions.roles.first().setPosition(arguments[0], true)
+            send_to.send("Роль передвинута")
+          } else {send_to.send("А КАК СДВИНУТЬ? (+x это вверх а -x это вниз)")}
+        } else {send_to.send("А УПОМИНАНИЕ РОЛИ БЛ#ТЬ?")}
+      } else {send_to.send("ТЫ НЕ АДМИН БЛ#ТЬ")}
+    } else {message.channel.send("БЛ#ТЬ НАЗВАНИЕ РОЛИ ЗАРЕЗЕРВИРОВАННО МОЕМУ СОЗДАТЕЛЮ И Я НЕ ПОЗВОЛЮ ТЕБЕ ЕЕ ПЕРЕДВИГАТЬ!")}
   }
   if(message.content.startsWith(prefix + 'Rename Role')) {
    if (Admin) {
