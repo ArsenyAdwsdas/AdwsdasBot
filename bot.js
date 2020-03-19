@@ -49,7 +49,7 @@ var dima_server = 621728738316386344
   if (isNotArseny) {if (role && message.member.roles.get(role.id)) {message.member.removeRole(role.id)}}*/
   if(message.content.startsWith('/kill')) {
    if (message.mentions.users.first()) {
-    message.channel.send("\\*" + message.mentions.users.first() + " выпал из мира*");
+    message.channel.send("\\*" + message.mentions.users.first() + " выпал из мира*\nhttps://media.discordapp.net/attachments/387531520811859970/686562938789822468/RaphaelDeath.gif");
    } else {message.channel.send("\\*" + message.author + " выпал из мира*")}
   }
   if (message.content.startsWith("EMBED") && isArseny) {
