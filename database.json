@@ -34,7 +34,7 @@
     "adwsdasbot как дела?": "как обычно",
     "adwsdasbot расскажи о своем создателе": "ArsenyAdwsdas (Арсений) создал меня с помощью JavaScript и Discord.js (он хотел перевести меня на Java, потом C++, потом Lua, но он не придумал как это сделать)\nCreator"
   },
-  "bans": {
+  "ban-words": {
     "джо": 1,
     "джоджо": 1,
     "джо-джо": 1,
@@ -50,5 +50,6 @@
     "0+": 1,
     "гей": 1,
     "есть мозг?": 1
-  }
+  },
+  "TOKEN": 'Njg2NjgwOTIxOTg1Nzc3NzI3.XmayyA.hWbUa1ZKAQ0hJChEAX6_xp3LEp0'
 }
