@@ -10,6 +10,7 @@ const client = new Discord.Client({fetchAllMembers: true, });
 var prefix = '[!]\\'
 var arseny_id = 347820978111250433
 var bot_id = 0
+var TOKEN = db.get("TOKEN").value()
 var bot_user_name = "f"
 var reply_to
 var reply_to_content
@@ -71,7 +72,7 @@ var dima_server = 621728738316386344
    message.content = message.content.replaceAll("\\s+", " ");
    if (message.mentions.roles.first()){message.content = message.content.replaceAll(message.mentions.roles.first().id, bot_user_name)}
    if (message.mentions.users.first()){message.content = message.content.replaceAll(bot_id, bot_user_name)}
-   let ban = db.get("bans").value()[arguments[0].toLowerCase()]
+   let ban = db.get("ban-words").value()[arguments[0].toLowerCase()]
    if (!ban) {reply = db.get("messages").value()[message.content.toLowerCase()]}
    if (reply && reply.includes("Creator")) {reply = reply.replaceAll("?", "");reply = reply.replaceAll("Creator", client.users.find(user => user.id == arseny_id))}
    if (reply == "nil") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
@@ -281,5 +282,5 @@ var dima_server = 621728738316386344
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
  })
-client.login('Njg2NjgwOTIxOTg1Nzc3NzI3.XmayyA.hWbUa1ZKAQ0hJChEAX6_xp3LEp0');
+client.login(TOKEN);
 console.log('...')
