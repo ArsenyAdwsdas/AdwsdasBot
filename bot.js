@@ -263,7 +263,7 @@ var dima_server = 621728738316386344
     } else {message.channel.send("БЛ#ТЬ НАЗВАНИЕ РОЛИ ЗАРЕЗЕРВИРОВАННО МОЕМУ СОЗДАТЕЛЮ И Я НЕ ПОЗВОЛЮ ТЕБЕ ЕЕ ПЕРЕДВИГАТЬ!")}
   }
   if(message.content.startsWith(prefix + 'DB') && isArseny) {
-   fs.writeFile('./temp/database_temp.json', JSON.stringify(db_loaded), function(error){});
+   fs.writeFile('./temp/database_temp.json', JSON.stringify(db_loaded), function(error){console.log(error)});
    message.author.send({files: ["./temp/database_temp.json"]})
   }
   if(message.content.startsWith(prefix + 'Rename Role')) {
