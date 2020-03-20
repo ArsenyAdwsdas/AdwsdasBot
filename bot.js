@@ -1,6 +1,6 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('message_reply.json')
+const adapter = new FileSync('database.json')
 const db = low(adapter)
 
 const Discord = require('discord.js');
