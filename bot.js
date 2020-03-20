@@ -58,8 +58,8 @@ var dima_server = 621728738316386344
   }
   if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
-  /*let role = message.guild.roles.find(r => r.name == 'Создатель '+bot_name)
-  if (isNotArseny) {if (role && message.member.roles.get(role.id)) {message.member.removeRole(role.id)}}*/
+  let role = message.member.roles.find(r => r.name == 'Создатель '+bot_name)
+  if (isNotArseny) {if (role) {message.member.removeRole(role.id)}}
   if(message.content.startsWith('/kill')) {
    if (message.mentions.users.first()) {
     message.channel.send("\\*" + message.mentions.users.first() + " выпал из мира*\nhttps://media.discordapp.net/attachments/387531520811859970/686562938789822468/RaphaelDeath.gif");
