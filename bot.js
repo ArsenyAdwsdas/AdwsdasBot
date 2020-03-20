@@ -2,6 +2,9 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('database.json')
 const db = low(adapter)
+const fs = require('fs');
+
+
 
 const Discord = require('discord.js');
 
@@ -16,6 +19,7 @@ var reply_to
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
 db_loaded["ban-words"] = db.get("ban-words").value()
+db_loaded["TOKEN"] = db.get("TOKEN").value()
 var reply_to_content
 var bot_name = "Adwsdas"
 var now = new Date().getTime();
@@ -257,6 +261,10 @@ var dima_server = 621728738316386344
         } else {send_to.send("А УПОМИНАНИЕ РОЛИ БЛ#ТЬ?")}
       } else {send_to.send("ТЫ НЕ АДМИН БЛ#ТЬ")}
     } else {message.channel.send("БЛ#ТЬ НАЗВАНИЕ РОЛИ ЗАРЕЗЕРВИРОВАННО МОЕМУ СОЗДАТЕЛЮ И Я НЕ ПОЗВОЛЮ ТЕБЕ ЕЕ ПЕРЕДВИГАТЬ!")}
+  }
+  if(message.content.startsWith(prefix + 'DB') && isArseny) {
+   fs.writeFile('./temp/database_temp.json', JSON.stringify(db_loaded) , 'utf-8');
+   message.author.send({files: ["./temp/database_temp.png"]})
   }
   if(message.content.startsWith(prefix + 'Rename Role')) {
    if (Admin) {
