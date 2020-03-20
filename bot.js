@@ -82,7 +82,7 @@ var dima_server = 621728738316386344
    let ban = db_loaded[("ban-words")][arguments[0].toLowerCase()]
    if (!ban) {reply = db_loaded["messages"][message.content.toLowerCase()]}
    if (reply && reply.includes("Creator")) {reply = reply.replaceAll("?", "");reply = reply.replaceAll("Creator", client.users.find(user => user.id == arseny_id))}
-   if (reply == "nil?") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
+   if (reply == "nil") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
   }
   if(message.content.startsWith('./me')) {
    if (arguments[0]) {
