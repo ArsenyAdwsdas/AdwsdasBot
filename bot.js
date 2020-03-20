@@ -66,7 +66,7 @@ var dima_server = 621728738316386344
    message.channel.send(my_embed)
   }
   if (message.content.startsWith(bot_user_name) || message.content.replace(/[\\<>@#&!]/g, "").includes(bot_id) || (message.mentions.roles && message.mentions.roles.first() && message.mentions.roles.first().managed && message.mentions.roles.first().name == bot_user_name)) {
-   let reply = "nil"
+   let reply = "nil?"
    message.content = message.content.replaceAll(/[\\<>@#&!]/g, "")
    message.content = message.content.replaceAll(/[\\<>@#&!]/g, "")
    message.content = message.content.replaceAll("\\s+", " ");
@@ -75,7 +75,7 @@ var dima_server = 621728738316386344
    let ban = db.get("ban-words").value()[arguments[0].toLowerCase()]
    if (!ban) {reply = db.get("messages").value()[message.content.toLowerCase()]}
    if (reply && reply.includes("Creator")) {reply = reply.replaceAll("?", "");reply = reply.replaceAll("Creator", client.users.find(user => user.id == arseny_id))}
-   if (reply == "nil") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
+   if (reply == "nil?") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
   }
   if(message.content.startsWith('./me')) {
    if (arguments[0]) {
