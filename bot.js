@@ -264,7 +264,7 @@ var dima_server = 621728738316386344
   }
   if(message.content.startsWith(prefix + 'DB') && isArseny) {
    fs.writeFile('./temp/database_temp.json', JSON.stringify(db_loaded), function(error){});
-   message.author.send({files: ["./temp/database_temp.png"]})
+   message.author.send({files: ["./temp/database_temp.json"]})
   }
   if(message.content.startsWith(prefix + 'Rename Role')) {
    if (Admin) {
