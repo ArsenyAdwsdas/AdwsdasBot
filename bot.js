@@ -32,6 +32,10 @@ var dima_server = 621728738316386344
  function close() {
    client.destroy()
  }
+ function extend(obj, src) {
+   Object.keys(src).forEach(function(key) { obj[key] = src[key]; });
+   return obj;
+ }
  
  String.prototype.replaceAll = function(search, replacement) {
   var target = this;
@@ -48,7 +52,7 @@ var dima_server = 621728738316386344
    message.channel.send("Ок.");
    close()
   }
-  if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"].merge(to_add)/*.write()*/} else {db_loaded["messages"].merge(to_add)/*.write()*/}}
+  if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
   /*let role = message.guild.roles.find(r => r.name == 'Создатель '+bot_name)
   if (isNotArseny) {if (role && message.member.roles.get(role.id)) {message.member.removeRole(role.id)}}*/
