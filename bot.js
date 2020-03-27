@@ -18,6 +18,7 @@ var bot_user_name = "f"
 var reply_to
 var summon_channel
 var summon_user
+var summon_complete
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
 db_loaded["ban-words"] = db.get("ban-words").value()
@@ -60,7 +61,11 @@ var dima_server = 621728738316386344
   }
   if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
-  if(message.channel.id == summon_channel && message.author.id == summon_user){message.channel.send("ПРИЗЫВ ЗАВЕРШЕН"); summon_channel = 0}
+  if(summon_complete){
+   if(message.channel.id == summon_channel && message.author.id == summon_user && message.content.toLowerCase().startsWith("призыв в армию")){message.channel.send("XD"); summon_user = 0}
+  } else {
+   if(message.channel.id == summon_channel && message.author.id == summon_user){message.channel.send("ПРИЗЫВ ЗАВЕРШЕН"); summon_complete = true}
+  }
   let role = message.member.roles.find(r => r.name == 'Создатель '+bot_name)
   if (isNotArseny) {if (role) {message.member.removeRole(role.id)}}
   if(message.content.startsWith('/kill')) {
@@ -99,9 +104,10 @@ var dima_server = 621728738316386344
   }
   if(message.content.startsWith('/summon')) {
    if (arguments[1]) {
-    message.channel.send("О <@"+arguments[0]+"> <@"+arguments[0]+"> <@"+arguments[0]+"> <@"+arguments[0]+"> <@"+arguments[0]+"> ПРИЗЫВАЮ ТЕБЯ");
+    message.channel.send("О <@"+arguments[1]+"> <@"+arguments[1]+"> <@"+arguments[1]+"> <@"+arguments[1]+"> <@"+arguments[1]+"> ПРИЗЫВАЮ ТЕБЯ");
     summon_user = arguments[1]
     summon_channel = message.channel.id
+    summon_complete = false
    } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
    message.delete()
   }
