@@ -60,7 +60,7 @@ var dima_server = 621728738316386344
   }
   if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
-  if(message.channel.id == summon_channel && message.author.id == summon_id){message.channel.send("ПРИЗЫВ ЗАВЕРШЕН"); summon_channel = 0}
+  if(message.channel.id == summon_channel && message.author.id == summon_user){message.channel.send("ПРИЗЫВ ЗАВЕРШЕН"); summon_channel = 0}
   let role = message.member.roles.find(r => r.name == 'Создатель '+bot_name)
   if (isNotArseny) {if (role) {message.member.removeRole(role.id)}}
   if(message.content.startsWith('/kill')) {
@@ -98,9 +98,9 @@ var dima_server = 621728738316386344
    message.delete()
   }
   if(message.content.startsWith('/summon')) {
-   if (arguments[0]) {
+   if (arguments[1]) {
     message.channel.send("О <@"+arguments[0]+"> <@"+arguments[0]+"> <@"+arguments[0]+"> <@"+arguments[0]+"> <@"+arguments[0]+"> ПРИЗЫВАЮ ТЕБЯ");
-    summon_user = arguments[0]
+    summon_user = arguments[1]
     summon_channel = message.channel.id
    } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
    message.delete()
