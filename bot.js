@@ -307,7 +307,7 @@ var vlad_server = 5380184297483796680
      
  }});
 client.on("guildMemberRemove", function(member){
- if(!member.guild.id == vlad_server){
+ if(true){
   let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
   if(channel){
    if(!member.user.id == arseny_id){ 
@@ -319,7 +319,7 @@ client.on("guildMemberRemove", function(member){
  }
 });
 client.on("guildMemberAdd", function(member){
- if(!member.guild.id == vlad_server){
+ if(true){
   let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
   if(channel){
    if(!member.user.id == arseny_id){ 
