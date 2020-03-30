@@ -29,7 +29,7 @@ var now = new Date().getTime();
 var bot_wip = false//"ANGRY"
 var help_text = "\n" + prefix + "Add Simple Role = для админов: создать простую роль"+"\n"+prefix +"Rename Role = для админов: переименовать роль"+"\n" + prefix + "Edit Permissions Role = для админов: редактировать права роли (используйте коды прав типо BAN_MEMBERS)"+"\n" + prefix + "Color Role \\ " + prefix + "ColorHEX Role = для админов: поменять цвет, формат типо 00ffff" + "\n" + "/kill \n"+prefix+'Схемы Использования = как использовать некоторые команды\n./me'
 var dima_server = 621728738316386344
-var vlad_server = 5380184297483796680
+var vlad_server = 538018429748379668
  function getRandomInt(init, range_end) {
   let range_endq = range_end-init
   let seedq = now
@@ -308,9 +308,11 @@ var vlad_server = 5380184297483796680
  }});
 client.on("guildMemberRemove", function(member){
  if(true){
+  let isArseny = member.user.id == arseny_id
+  let isNotArseny = !isArseny
   let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
   if(channel){
-   if(!member.user.id == arseny_id){ 
+   if(isNotArseny){ 
     channel.send(member.user+" покинул сервер")
    } else {
     channel.send("Мой создатель покинул сервер...\n"+member.user)
@@ -320,12 +322,14 @@ client.on("guildMemberRemove", function(member){
 });
 client.on("guildMemberAdd", function(member){
  if(true){
+  let isArseny = member.user.id == arseny_id
+  let isNotArseny = !isArseny
   let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
   if(channel){
-   if(!member.user.id == arseny_id){ 
+   if(isNotArseny){ 
     channel.send(member.user+" зашел на сервер")
    } else {
-    channel.send("Мой создатель зашел на сервер сервер\n"+member.user)
+    channel.send("Мой создатель зашел на сервер\n"+member.user)
    }
   }
  }
