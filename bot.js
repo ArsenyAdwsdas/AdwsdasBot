@@ -305,6 +305,16 @@ var dima_server = 621728738316386344
   }
      
  }});
+client.on("guildMemberRemove", function(member){
+ let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
+ if(channel){
+  if(true) { 
+   channel.send(member.user+" покинул сервер")
+  } else {
+   channel.send("Мой создатель покинул сервер...\n"+member.user)
+  }
+ }
+});
  client.on('ready', () => {
     bot_id = client.user.id
     bot_user_name = client.user.username
