@@ -105,8 +105,9 @@ var vlad_server = 538018429748379668
   }
   if(message.content.startsWith('/summon')) {
    if (arguments[1]) {
-    message.channel.send("О <@"+arguments[1]+"> <@"+arguments[1]+"> <@"+arguments[1]+"> <@"+arguments[1]+"> <@"+arguments[1]+"> ПРИЗЫВАЮ ТЕБЯ");
-    summon_user = arguments[1]
+    let kcxm = arguments.shift
+    message.channel.send("О <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> ПРИЗЫВАЮ ТЕБЯ");
+    summon_user = arguments[1].replaceAll(/[\\<>@#&!]/g, "")
     summon_channel = message.channel.id
     summon_complete = false
    } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
