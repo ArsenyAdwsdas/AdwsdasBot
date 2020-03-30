@@ -310,10 +310,22 @@ client.on("guildMemberRemove", function(member){
  if(!member.guild.id == vlad_server){
   let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
   if(channel){
-   if(true) { 
+   if(!member.user.id == arseny_id){ 
     channel.send(member.user+" покинул сервер")
    } else {
     channel.send("Мой создатель покинул сервер...\n"+member.user)
+   }
+  }
+ }
+});
+client.on("guildMemberAdd", function(member){
+ if(!member.guild.id == vlad_server){
+  let channel = member.guild.channels.find(r => r.name == 'уходы-приходы')
+  if(channel){
+   if(!member.user.id == arseny_id){ 
+    channel.send(member.user+" зашел на сервер")
+   } else {
+    channel.send("Мой создатель зашел на сервер сервер\n"+member.user)
    }
   }
  }
