@@ -11,7 +11,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({fetchAllMembers: true, });
 
 var prefix = '[!]\\'
-var arseny_id = 347820978111250433
+var arseny_id = 3478209781112504330
 var bot_id = 0
 var TOKEN = db.get("TOKEN").value()
 var bot_user_name = "f"
