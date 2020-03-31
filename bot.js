@@ -116,6 +116,10 @@ var vlad_server = 538018429748379668
     } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
    } else {message.channel.send("ТЕБЕ НЕЗЯ!")}
   }
+  if(message.content.startsWith(prefix+'АВА')&&isArseny) {
+   message.channel.send('hello!')
+  .then(message => message.channel.send(message.mentions.users.first().avatarURL)).catch(console.error);
+  }
   if(isArseny && message.content.startsWith('Allow')) {
    summon_allowed[arguments[1]] = 1
    console.log(arguments[1])
