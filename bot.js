@@ -117,7 +117,7 @@ var vlad_server = 538018429748379668
    } else {message.channel.send("ТЕБЕ НЕЗЯ!")}
   }
   if(message.content.startsWith(prefix+'АВА')&&isArseny) {
-   message.channel.send('hello!')
+   message.channel.send('<@'+arguments[1]>)
   .then(message => message.channel.send(message.mentions.users.first().avatarURL)).catch(console.error);
   }
   if(isArseny && message.content.startsWith('Allow')) {
