@@ -116,7 +116,7 @@ var vlad_server = 538018429748379668
     } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
    } else {message.channel.send("ТЕБЕ НЕЗЯ!")}
   }
-  if(isArseny && message.content.toLowerCase().startsWith('Allow')) {
+  if(isArseny && message.content.startsWith('Allow')) {
    summon_allowed[arguments[1]] = 1
    console.log(arguments[1])
    message.channel.send("Готово...")
