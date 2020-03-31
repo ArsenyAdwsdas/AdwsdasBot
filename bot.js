@@ -105,7 +105,7 @@ var vlad_server = 538018429748379668
    message.delete()
   }
   if(message.content.startsWith('/summon')) {
-   if(summon_allowed.includes(message.author.id)){
+   if(summon_allowed.includes(message.author.id.toString()) || summon_allowed.includes(message.author.id)){
     if (arguments[1]) {
      let kcxm = arguments.shift()
      message.channel.send("О <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> ПРИЗЫВАЮ ТЕБЯ");
@@ -344,7 +344,6 @@ client.on("guildMemberAdd", function(member){
     bot_id = client.user.id
     bot_user_name = client.user.username
     help_text = help_text+'\n'+prefix+'о '+bot_user_name
-    summon_allowed.push(arseny_id)
     if (bot_wip == true) {
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
