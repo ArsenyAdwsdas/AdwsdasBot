@@ -19,6 +19,7 @@ var reply_to
 var summon_channel
 var summon_user
 var summon_complete
+var summon_allowed = []
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
 db_loaded["ban-words"] = db.get("ban-words").value()
@@ -104,14 +105,18 @@ var vlad_server = 538018429748379668
    message.delete()
   }
   if(message.content.startsWith('/summon')) {
-   if (arguments[1]) {
-    let kcxm = arguments.shift()
-    message.channel.send("О <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> ПРИЗЫВАЮ ТЕБЯ");
-    summon_user = arguments[0].replaceAll(/[\\<>@#&!]/g, "")
-    summon_channel = message.channel.id
-    summon_complete = false
-   } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
-   message.delete()
+   if(summon_allowed.includes(message.author.id)){
+    if (arguments[1]) {
+     let kcxm = arguments.shift()
+     message.channel.send("О <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> ПРИЗЫВАЮ ТЕБЯ");
+     summon_user = arguments[0].replaceAll(/[\\<>@#&!]/g, "")
+     summon_channel = message.channel.id
+     summon_complete = false
+    } else {message.channel.send("\\*"+message.author + " не знает кого призвать...*")}
+   } else {message.channel.send("ТЕБЕ НЕЗЯ!")}
+  }
+  if(isArseny && message.content.toLowerCase().startsWith('Allow')) {
+   summon_allowed.push(arguments[1])
   }
   let command2 = arguments.shift()
   let command1 = arguments.shift()
@@ -339,6 +344,7 @@ client.on("guildMemberAdd", function(member){
     bot_id = client.user.id
     bot_user_name = client.user.username
     help_text = help_text+'\n'+prefix+'о '+bot_user_name
+    summon_allowed.push(arseny_id)
     if (bot_wip == true) {
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
