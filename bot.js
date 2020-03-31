@@ -105,7 +105,11 @@ var vlad_server = 538018429748379668
    message.delete()
   }
   if(message.content.startsWith('/summon')) {
-   if(summon_allowed.includes(message.author.id.toString()) || summon_allowed.includes(message.author.id)){
+   let isSummonAllowed = false
+   for(let i = 0; i < summon_allowed.length; i++){
+    if(summon_allowed[i] == message.author.id){isSummonAllowed=true}
+   }
+   if(isSummonAllowed){
     if (arguments[1]) {
      let kcxm = arguments.shift()
      message.channel.send("О <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> <@"+arguments.toString().replaceAll(",", " ")+"> ПРИЗЫВАЮ ТЕБЯ");
