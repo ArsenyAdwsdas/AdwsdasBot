@@ -19,7 +19,7 @@ var reply_to
 var summon_channel
 var summon_user
 var summon_complete
-var summon_allowed = []
+var summon_allowed = {}
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
 db_loaded["ban-words"] = db.get("ban-words").value()
@@ -105,10 +105,7 @@ var vlad_server = 538018429748379668
    message.delete()
   }
   if(message.content.startsWith('/summon')) {
-   let isSummonAllowed = false
-   for(let i = 0; i < summon_allowed.length; i++){
-    if(summon_allowed[i] == message.author.id){isSummonAllowed=true}
-   }
+   let isSummonAllowed = summon_allowed[message.author.id]
    if(isSummonAllowed){
     if (arguments[1]) {
      let kcxm = arguments.shift()
@@ -120,7 +117,9 @@ var vlad_server = 538018429748379668
    } else {message.channel.send("ТЕБЕ НЕЗЯ!")}
   }
   if(isArseny && message.content.toLowerCase().startsWith('Allow')) {
-   summon_allowed.push(arguments[1])
+   summon_allowed[arguments[1]] = 1
+   console.log(arguments[1])
+   message.channel.send("Готово...")
   }
   let command2 = arguments.shift()
   let command1 = arguments.shift()
