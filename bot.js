@@ -19,15 +19,15 @@ var reply_to
 var summon_channel
 var summon_user
 var summon_complete
-var a
-var b
-var c
-var d
-var e
-var f
-var g
-var h
-var i
+var a = 0
+var b = 0
+var c = 0
+var d = 0
+var e = 0
+var f = 0
+var g = 0
+var h = 0
+var i = 0
 var message
 var summon_allowed = {}
 var db_loaded = {}
@@ -148,8 +148,8 @@ var vlad_server = 538018429748379668
    message.channel.send("((")
   }
   if (message.content.startsWith("eval()") && isArseny) {
-   let call = arguments.shift()
-   let leftThing = eval(arguments.toString().replaceAll(",", " "))
+   let call = message.content.slice("eval()".length+1)
+   let leftThing = eval(call)
    if(leftThing){message.channel.send(leftThing)}
   }
   if(message.content.toLowerCase().startsWith('хороший бот') || message.content.toLowerCase().startsWith('мне нравится этот бот')) {
