@@ -387,6 +387,6 @@ client.on("guildMemberAdd", function(member){
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
-    messagesBonuses["diag"] = function (message){if (message.content.startsWith("diag") && isArseny) {d = eval(argumentsAndPrefix[1]);Object.keys(d).forEach(function(key){if(typeof d[key] == "object"){Object.keys(d[key]).forEach(function(key2){message.channel.send(key+": "+key2+": "+d[key][key2])})}else{message.channel.send(key+": "+d[key])}})}}})
+    messagesBonuses["diag"] = function (message){if (message.content.startsWith("diag") && isArseny) {let z = "";d = eval(argumentsAndPrefix[1]);Object.keys(d).forEach(function(key){if(typeof d[key] == "object"){Object.keys(d[key]).forEach(function(key2){z = z+"\n"+key+": "+key2+": "+d[key][key2]})}else{z = z+"\n"+key+": "+d[key]}});message.channel.send(z)}}})
 client.login(TOKEN);
 console.log('...')
