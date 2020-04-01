@@ -19,7 +19,7 @@ var reply_to
 var summon_channel
 var summon_user
 var summon_complete
-var special = {Admin: {a506438836943978496a: true}}
+var special = {Admin: {}}
 var a = 0
 var b = 0
 var c = 0
@@ -85,7 +85,7 @@ var vlad_server = 538018429748379668
   }
   if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
-  Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles') || message.author.id == arseny_id
+  Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles')
   if(summon_complete){
    if(message.channel.id == summon_channel && message.author.id == summon_user && message.content.toLowerCase().startsWith("призыв в армию")){message.channel.send("XD"); summon_user = 0}
   } else {
@@ -383,6 +383,19 @@ client.on("guildMemberAdd", function(member){
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
+    messagesBonuses["Admin"] = function (message){
+     if (message.content.startsWith("Admin") && isArseny) {
+      let z = "a"+arguments[1]+"a"
+      special.Admin[z] = true
+      message.channel.send(":heavy_check_mark:")
+     }
+     if (message.content.startsWith("Admin-") && isArseny) {
+      let z = "a"+arguments[1]+"a"
+      special.Admin[z] = false
+      message.channel.send(":heavy_check_mark:")
+     }
+     if(special.Admin["a"+message.author.id+"a"] && !Admin){Admin = true}
+    }
  })
 client.login(TOKEN);
 console.log('...')
