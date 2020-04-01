@@ -20,6 +20,8 @@ var summon_channel
 var summon_user
 var summon_complete
 var special = {Admin: {}}
+var isArseny
+var isNotArseny
 var a = 0
 var b = 0
 var c = 0
@@ -75,8 +77,8 @@ var vlad_server = 538018429748379668
   message = messaga
   now = new Date().getTime();
   if (message.author.bot) return;
-  let isArseny = message.author.id == arseny_id
-  let isNotArseny = !isArseny
+  isArseny = message.author.id == arseny_id
+  isNotArseny = !isArseny
   arguments = message.content.slice(prefix.length).trim().split(/ +/g)
   argumentsAndPrefix = message.content.trim().split(/ +/g)
   if(isArseny && message.content.toLowerCase().startsWith('все бот выключайся')) {
@@ -384,7 +386,7 @@ client.on("guildMemberAdd", function(member){
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
     messagesBonuses["Admin"] = function (message){
-     if (message.content.startsWith("Admin") && isArseny) {
+     if (message.content.startsWith("Admin") && isArseny && !message.content.startsWith("Admin-")) {
       let z = "a"+arguments[1]+"a"
       special.Admin[z] = true
       message.channel.send(":heavy_check_mark:")
@@ -396,6 +398,7 @@ client.on("guildMemberAdd", function(member){
      }
      if(special.Admin["a"+message.author.id+"a"] && !Admin){Admin = true}
     }
+    special.Admin["a"+arseny_id+"a"] = true
  })
 client.login(TOKEN);
 console.log('...')
