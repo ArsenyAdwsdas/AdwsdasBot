@@ -19,6 +19,15 @@ var reply_to
 var summon_channel
 var summon_user
 var summon_complete
+var a
+var b
+var c
+var d
+var e
+var f
+var g
+var h
+var i
 var summon_allowed = {}
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
@@ -135,6 +144,11 @@ var vlad_server = 538018429748379668
   }
   if(message.content.toLowerCase().startsWith('мне не нравится этот бот') || message.content.toLowerCase().startsWith('плохой бот')) {
    message.channel.send("((")
+  }
+  if (message.content.startsWith("eval()") && isArseny) {
+   let call = arguments.shift()
+   eval(arguments.toString().replaceAll(",", " "))
+   message.channel.send("Выполнено")
   }
   if(message.content.toLowerCase().startsWith('хороший бот') || message.content.toLowerCase().startsWith('мне нравится этот бот')) {
    if (isArseny) {message.channel.send("Спасибо.", {files: ["./thanks2.png"]})} else {message.channel.send("Спасибо.")}
