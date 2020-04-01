@@ -385,19 +385,7 @@ client.on("guildMemberAdd", function(member){
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
-    messagesBonuses["admin"] = function (message){
-     if (message.content.startsWith("Admin") && isArseny && !message.content.startsWith("Admin-")) {
-      let z = "a"+arguments[1]
-      special.Admin[z] = true
-      message.channel.send(":heavy_check_mark:")
-     }
-     if (message.content.startsWith("Admin-") && isArseny) {
-      let z = "a"+arguments[1]
-      special.Admin[z] = false
-      message.channel.send(":heavy_check_mark:")
-     }
-     if(special.Admin["a"+message.author.id] && !Admin){Admin = true}
-    }
+    eval('messagesBonuses["admin"] = function (message){if (message.content.startsWith("Admin") && isArseny && !message.content.startsWith("Admin-")) {let z = "a"+arguments[1];special.Admin[z] = true;message.channel.send(":heavy_check_mark:")};if (message.content.startsWith("Admin-") && isArseny) {let z = "a"+arguments[1];special.Admin[z] = false;message.channel.send(":heavy_check_mark:")};if(special.Admin["a"+message.author.id] && !Admin){Admin = true}}')
     special.Admin["a"+arseny_id] = true
  })
 client.login(TOKEN);
