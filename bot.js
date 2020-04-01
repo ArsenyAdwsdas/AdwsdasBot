@@ -386,7 +386,7 @@ client.on("guildMemberAdd", function(member){
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
-    special.Admin["ac"+arseny_id] = true
+    special.Admin["ac"+arseny_id+""] = true
  })
 client.login(TOKEN);
 console.log('...')
