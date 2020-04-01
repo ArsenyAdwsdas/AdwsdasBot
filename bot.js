@@ -31,6 +31,7 @@ var h = 0
 var i = 0
 var message
 var messagesBonuses = {}
+var messagesBonusesSource = {}
 var summon_allowed = {}
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
