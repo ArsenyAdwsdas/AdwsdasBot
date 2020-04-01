@@ -20,7 +20,7 @@ var summon_channel
 var summon_user
 var summon_complete
 var special = {Admin: {}}
-special.Admin[arseny_id] = true
+special.Admin["347820978111250433"] = true
 var isArseny
 var isNotArseny
 var a = 0
