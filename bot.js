@@ -30,7 +30,11 @@ var g = 0
 var h = 0
 var i = 0
 var message
+var Admin
+var arguments
+var argumentsAndPrefix
 var messagesBonuses = {}
+var messagesBonuses2 = {}
 var messagesBonusesSource = {}
 var summon_allowed = {}
 var db_loaded = {}
@@ -60,6 +64,7 @@ var vlad_server = 538018429748379668
  }
  function messagesBonus() {
    Object.keys(messagesBonuses).forEach(function(key) { messagesBonuses[key](message); });
+   Object.keys(messagesBonuses2).forEach(function(key) { messagesBonuses2[key](message); });
  }
  
  String.prototype.replaceAll = function(search, replacement) {
@@ -72,15 +77,15 @@ var vlad_server = 538018429748379668
   if (message.author.bot) return;
   let isArseny = message.author.id == arseny_id
   let isNotArseny = !isArseny
-  let arguments = message.content.slice(prefix.length).trim().split(/ +/g)
-  let argumentsAndPrefix = message.content.trim().split(/ +/g)
-  let Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles') || message.author.id == arseny_id
+  arguments = message.content.slice(prefix.length).trim().split(/ +/g)
+  argumentsAndPrefix = message.content.trim().split(/ +/g)
   if(isArseny && message.content.toLowerCase().startsWith('все бот выключайся')) {
    message.channel.send("Ок.");
    close()
   }
   if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
+  Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles') || message.author.id == arseny_id
   if(summon_complete){
    if(message.channel.id == summon_channel && message.author.id == summon_user && message.content.toLowerCase().startsWith("призыв в армию")){message.channel.send("XD"); summon_user = 0}
   } else {
