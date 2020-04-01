@@ -59,7 +59,6 @@ var vlad_server = 538018429748379668
  }
  function messagesBonus() {
    Object.keys(messagesBonuses).forEach(function(key) { messagesBonuses[key](message); });
-   return obj;
  }
  
  String.prototype.replaceAll = function(search, replacement) {
@@ -115,6 +114,7 @@ var vlad_server = 538018429748379668
    if (reply && reply.includes("Creator")) {reply = reply.replaceAll("?", "");reply = reply.replaceAll("Creator", client.users.find(user => user.id == arseny_id))}
    if (reply == "nil") {} else {if (reply){message.channel.send(reply)} else {reply_to_content = message.content;reply_to = message; client.users.find(user => user.id == arseny_id).send(message.author+": "+argumentsAndPrefix.toString().replaceAll(",", " "))}}
   }
+  messagesBonus()
   if(message.content.startsWith('./me')) {
    if (arguments[0]) {
     message.channel.send("\\*"+message.author+"\ "+arguments.toString().replaceAll(",", " ")+"*");
