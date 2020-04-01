@@ -87,7 +87,7 @@ var vlad_server = 538018429748379668
   }
   if (!message.guild && message.author.id == arseny_id && reply_to) {reply_to.channel.send(message.content);let to_add = {}; if (message.content == "ban"){to_add[reply_to_content.toLowerCase()] = 1} else {to_add[reply_to.content.toLowerCase()] = message.content}; if (message.content == "ban"){db_loaded["ban-words"] = extend(db_loaded["ban-words"], to_add)} else {db_loaded["messages"] = extend(db_loaded["messages"], to_add)}}
   if (!message.guild) return;
-  if(!messagesBonusesSource["admin"]){eval('messagesBonuses["admin"] = function (message){if (message.content.startsWith("Admin") && isArseny && !message.content.startsWith("Admin-")) {let z = "ac"+arguments[1];special.Admin[z] = true;message.channel.send(":heavy_check_mark:")};if (message.content.startsWith("Admin-") && isArseny) {let z = "ac"+arguments[1];special.Admin[z] = false;message.channel.send(":heavy_check_mark:")}}');messagesBonusesSource["admin"] = true}
+  if(!messagesBonusesSource["admin"]){eval('messagesBonuses["admin"] = function (message){if (message.content.startsWith("Admin") && isArseny) {let z = "ac"+arguments[1];special.Admin[z] = true;message.channel.send(":heavy_check_mark:")};if (message.content.startsWith("-Admin") && isArseny) {let z = "ac"+arguments[1];special.Admin[z] = false;message.channel.send(":heavy_check_mark:")}}');messagesBonusesSource["admin"] = true}
   Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles') || special.Admin["ac"+message.author.id] == true
   if(summon_complete){
    if(message.channel.id == summon_channel && message.author.id == summon_user && message.content.toLowerCase().startsWith("призыв в армию")){message.channel.send("XD"); summon_user = 0}
@@ -386,7 +386,8 @@ client.on("guildMemberAdd", function(member){
     client.user.setPresence({status: 'dnd'});
     client.user.setPresence({game: {name: "WIP, " + prefix + "help", type: 2}})} else {
     if (bot_wip) {client.user.setPresence({status: 'dnd'}); client.user.setPresence({game: {name: "Пытается успокоить Арсения, " + prefix + "help", type: 2}})} else {client.user.setPresence({game: {name: "ACTIVE, " + prefix + "help", type: 3}})}}
-    special.Admin["a"+arseny_id] = true
+    special.Admin["ac"+arseny_id] = true
+    messagesBonuses[diag] = function(){if(message.content.startsWith('diag')){d = eval(arguments[1]);Object.keys(d).forEach(function(key){ message.channel.send(key+": "+d[key])})}}
  })
 client.login(TOKEN);
 console.log('...')
