@@ -74,6 +74,7 @@ var vlad_server = 538018429748379668
   let isNotArseny = !isArseny
   let arguments = message.content.slice(prefix.length).trim().split(/ +/g)
   let argumentsAndPrefix = message.content.trim().split(/ +/g)
+  let Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles') || message.author.id == arseny_id
   if(isArseny && message.content.toLowerCase().startsWith('все бот выключайся')) {
    message.channel.send("Ок.");
    close()
@@ -181,7 +182,6 @@ var vlad_server = 538018429748379668
   }
  if (message.content.startsWith(prefix)) {
   let bot = message.guild.members.get(bot_id)
-  let Admin = message.member.hasPermission(["MANAGE_NICKNAMES", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS", "MANAGE_ROLES"], {checkAdmin: true, checkOwner: true}) || message.member.roles.find(r => r.name == 'Set Roles') || message.author.id == arseny_id
   let bot_role_pos = bot.highestRole.position
   console.log(message.author + ': ' + message.content)
   if(message.author === client.user) return;
