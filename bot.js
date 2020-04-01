@@ -30,6 +30,7 @@ var g = 0
 var h = 0
 var i = 0
 var message
+var messagesBonuses = {}
 var summon_allowed = {}
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
@@ -54,6 +55,10 @@ var vlad_server = 538018429748379668
  }
  function extend(obj, src) {
    Object.keys(src).forEach(function(key) { obj[key] = src[key]; });
+   return obj;
+ }
+ function messagesBonus() {
+   Object.keys(messagesBonuses).forEach(function(key) { messagesBonuses[key](message); });
    return obj;
  }
  
