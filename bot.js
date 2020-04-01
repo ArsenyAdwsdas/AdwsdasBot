@@ -28,6 +28,7 @@ var f
 var g
 var h
 var i
+var message
 var summon_allowed = {}
 var db_loaded = {}
 db_loaded["messages"] = db.get("messages").value()
@@ -59,7 +60,8 @@ var vlad_server = 538018429748379668
   var target = this;
   return target.replace(new RegExp(search, 'g'), replacement);
  };
- client.on('message', async message => {
+ client.on('message', async messaga => {
+  message = messaga
   now = new Date().getTime();
   if (message.author.bot) return;
   let isArseny = message.author.id == arseny_id
