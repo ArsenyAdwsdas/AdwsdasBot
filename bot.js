@@ -19,7 +19,7 @@ var reply_to
 var summon_channel
 var summon_user
 var summon_complete
-var special = {Admin = {a506438836943978496a = true}}
+var special = {Admin = {a506438836943978496a: true}}
 var a = 0
 var b = 0
 var c = 0
