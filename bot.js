@@ -150,7 +150,7 @@ var vlad_server = 538018429748379668
   if (message.content.startsWith("eval()") && isArseny) {
    let call = arguments.shift()
    eval(arguments.toString().replaceAll(",", " "))
-   message.channel.send("Выполнено")
+   message.channel.send(a)
   }
   if(message.content.toLowerCase().startsWith('хороший бот') || message.content.toLowerCase().startsWith('мне нравится этот бот')) {
    if (isArseny) {message.channel.send("Спасибо.", {files: ["./thanks2.png"]})} else {message.channel.send("Спасибо.")}
